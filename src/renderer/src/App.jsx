@@ -1,21 +1,22 @@
 import { Routes, Route } from 'react-router-dom'
-import Login from './pages/authentication/Login'
-import Home from './pages/Home'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getStatus } from './store/liveStatus/LiveStatusSlice'
 import { useEffect } from 'react'
+
+import Index from './Components/Index'
 
 export default function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getStatus())
+    dispatch(getStatus()).then((action) => {
+      console.log(action)
+    })
   }, [])
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      {/* <Route path="/dashboard" element={<h1>Dashboard</h1>} /> */}
+      <Route path="/" element={<Index />} />
     </Routes>
   )
 }
