@@ -1,54 +1,40 @@
 import {
   Box,
   Flex,
-  Avatar,
-  Text,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
   useColorMode,
-  Center
+  Center,
+  Heading
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
-
-// const NavLink = (props) => {
-//   const { children } = props
-
-//   return (
-//     <Box
-//       as="a"
-//       px={2}
-//       py={1}
-//       rounded={'md'}
-//       _hover={{
-//         textDecoration: 'none',
-//         bg: useColorModeValue('gray.200', 'gray.700')
-//       }}
-//       href={'#'}
-//     >
-//       {children}
-//     </Box>
-//   )
-// }
+import { useEffect, useState } from 'react'
+import dayjs from 'dayjs'
 
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode()
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [myTime, setMyTime] = useState(dayjs().format('HH:mm:ss DD MMMM YYYY'))
+
+  useEffect(() => {
+    setInterval(() => {
+      setMyTime(dayjs().format('HH:mm:ss DD MMMM YYYY'))
+    }, 1000)
+  })
+
   return (
     <>
       <Box
-        bg={useColorModeValue('blue.400', 'blue.900')}
-        color={useColorModeValue('gray.900', 'gray.200')}
+        bg={useColorModeValue('teal.400', 'teal.800')}
+        color={useColorModeValue('white', 'white')}
         px={4}
       >
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box>ThreeView</Box>
+          <Heading size="md">Three View API</Heading>
+
+          <Heading size="sm">{myTime}</Heading>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>

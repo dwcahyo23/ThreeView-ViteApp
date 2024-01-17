@@ -12,7 +12,7 @@ export default function Index() {
       <Main>
         <MainStatus />
       </Main>
-      <Footer />
+      {/* <Footer /> */}
     </Content>
   )
 }

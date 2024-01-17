@@ -3,7 +3,7 @@ import { Box, Container, Stack, Text, useColorModeValue, Flex } from '@chakra-ui
 export default function Footer() {
   return (
     <Box
-      bg={useColorModeValue('gray.300', 'gray.900')}
+      bg={useColorModeValue('teal.300', 'teal.800')}
       color={useColorModeValue('gray.900', 'gray.200')}
       position="absolute"
       bottom={0}
